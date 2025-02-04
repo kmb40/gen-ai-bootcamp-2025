@@ -7,7 +7,7 @@ Beginner, JLPT5
 ## Examples
 Here are examples of user input and assistant output, pay attention to the score because and why the example is scored the way it is.
 
-**Note: This code should be inserted into the prompt at meta.ai as good (score 10) and bad (score 4) examples.**
+<ignore>**Note: This code should be inserted into the prompt at meta.ai as good (score 10) and bad (score 4) examples.**</ignore>
 
 <example>
     <user:input>
