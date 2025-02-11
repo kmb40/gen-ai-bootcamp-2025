@@ -1,0 +1,35 @@
+---
+description:
+globs:
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
+
+from flask import Blueprint, request, jsonify
+from werkzeug.exceptions import BadRequest
+from marshmallow import ValidationError
+
+users_bp = Blueprint('users', __name__)
+
+@users_bp.route('/user', methods=['POST'])
+def create_user():
+    try:
+        # Always validate input
+        data = request.get_json()
+        if not data:
+            raise BadRequest('No input data provided')
+
+        # Use proper status codes
+        return jsonify({'message': 'User created'}), 201
+
+    except ValidationError as e:
+        # Handle validation errors
+        return jsonify({'error': str(e)}), 400
+        
+    except Exception as e:
+        # Log unexpected errors
+        current_app.logger.error(f'Error creating user: {str(e)}')
+        return jsonify({'error': 'Internal server error'}), 500
